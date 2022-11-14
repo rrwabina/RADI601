@@ -1,0 +1,150 @@
+Health IT in Clinical Settings
+
+Section 1: EHR Systems/Hospital Information Systems
+    - functionality
+    - gradual approach, it depends on the complexity of the system 
+    - Scanned medical records can be considered as EHR. Physician notes are also considered as EHR.
+    - However, they vary on the importance of the weight of the information regarding the patient's health status
+    - Even EHRs are not scanned but typed, they can be structured or not structured. So we need NLP
+    - But NLP has some limitations due to the bilingual nature. Not to mention, some medical terms are combination of English + limitations
+    - These limitation can cause confusion to the patients and medical staff. 
+    - The NLP needs to understand the problems related to medical texts in EHRs.
+
+    We aspire to have EHRs to be typed - termed as fully-electronic. 
+
+    Computerized (Physician/Provider) Order Entry (CPOE)
+        - Order systems of nurses, doctors, and other medical staff 
+        - Physicians enters medication, lab, imaging orders online. The nurse/pharamcy process these orders ==> Considered part of the EHR / HIS 
+            - In some cases, the nurses have to review the orders first before medication list flows into the pharmacy 
+        - Medication orders are the most complex because you need to consider the medication process, intakes, and other information 
+        - Advantage of CPOE: No handwriting, completeness, clarity, no transcription errors 
+        - Example:
+            - IPD: Morphone 5mg  stat (immediately) | No route (IV/IM) -- it could have an effect on how long would the drug take effect on the patient's body
+                - Skipping the route can lead to errors 
+                - Therefore, completeness is important.
+                - Fields: Drug Name, Drug Form (Units: tablet | capsule | syrup), Strength, Ampule, Dose, Route, Frequency, Time (Stat)
+        - Ordering, Transcription, Dispensing, Administration --> No transcription errors 
+        - Streamlines workflow, increases efficiency
+            - Parallel - doctors enter the drug in CPOE system, the order will proceed to the pharmacy right away. SIMULTANEOUS 
+            - Once the doctors finish the medical examination, the patient can pay the medicine and get their order in the pharmacy. 
+            - This is much efficient and fast. 
+        
+        - ISSUES OF CPOE 
+            - Frustration of medical doctors since doctors are not trained as clerks 
+                - Hence, this is an Added Value Work for doctors. However, this should be the doctors' jobs to ensure safe prescription 
+            - Regardless if you are new or accustomed to the system, some doctors have reduced productivity if they do CPOE
+                - In some cases, there are minor changes in the medication. Hence, doctors can import the previous medication orders, adjust, and confirm it. 
+                - If it was a new patient, doctors can use templates as doctor sets. These sets are predefined medication orders where doctors can use it if the patient
+                  has the same medication order from past patients. 
+            - Unclear value proposition: As data scientist, you must convey the system to non-technical people in the medical staff. This is important for medical staff
+              to see the value of CPOE. 
+            - Complexity of medication data structure ---> doctors need to provide a lot of information before confirming the medication order. 
+            - Integration of medication, laboratory results, diagnostics, imaging and other orders. 
+                - Several clicks since there are a lot of information. Hence, IS needs to improve UX. 
+            - Fewer mistakes?? This is questionable.
+                - If you have 2 drugs. The CPOE will sort the drug names. 
+                    - CARDURA (trade name, enlarge prostate) ====> cArdURA 
+                    - CORDALONE (anti-arrhythmic)            ====> cOrdALONE
+                    - What if the doctor clicks the CARDURA instread of CORDALONE?
+                        - Confirmation message. 
+                        - Pharamcy use Tallman Lettering
+            - CASE ISSUE: One of the most important lessons learned to date is that the complexity of human change management may be easily underestimated.
+                - EMPHASIS: In many cases, health IT is not about the technology. It is about the information, management, and strategies. 
+                - There may be resistance to other stakeholders in adopting these CPOE systems but IS people should convey the value of systems properly.
+                - Different codes from different medical staffs may provide confusion among them. Hence, this confusion may produce errors and misdiagnosis. 
+                - Usage: IPD, write the prescription, there was an impleemnt electronic CPOE. There is no space for the laptop due to spatial constraints. 
+                        - Doctors go to the patient, write it on the paper. 
+                - There is no one-best approach. It will always depend on the technology and issue available to the hospital. 
+    
+    Computerized (Nursing) Order Entry (CPOE)
+        - Utilizing standards in nursing informatics - ICNP, Omaha
+        - Populates and documents care-planning - What plan is needed for this patient? 
+        - Incidence - Occurence Report 
+        - ISSUES:
+            - Nurses should have more time on the patients, not on the computers. BETTER Care
+            - BETTER CARE vs BETTER DOCUMENTATION
+            - Evolving standards in nursing management
+    
+    Computing (Pharamacy) Order Entry (CPOE)
+        - Streamlinees workflow from medication orders 
+        - ePrescribing is more correct term because orders can be sent to other institutions. 
+        - ePrescription is only suited for medical orders within a single institution. 
+
+    Stages of Medication Process and Closed Loop Medication Management 
+        - Ordering ===> Transcription ===> Dispensing ===> Administration 
+        - CPOE can help the Ordering and Transcription 
+        - Dispensing: Automatic Medication Dispensing, Barcoded Medication Dispensing 
+            - Dispensing is manual but the technology will help them if it is the correct patient and drug. 
+            - Barcodes, RF, QR codes 
+        - Administration: Electronic Medication Administration (eMAR), Barcoded Medication Administrtion Records (paper form ==> note the time)
+        - eMAR allows you to timestamp the admin usage automaticallly. It can be used altogether with the BMAR.
+        
+        - Closed-Loop ====> Electronic
+
+        - Not cost-effective to use robots or automatic dispension
+            - Ramathibodi implemented automated dispensing 
+            
+    Pharmacy Applications 
+        - ISSUES:
+            - Who is entering the data for Dispensing stage: AMD and BMD? 
+                - Why not nurses? 
+                - Who enters medication orders into electronic format at which stage? 
+                    - There may be unintend consequences: workarounds 
+                    - Power shifts - The power shifts from one role into another. 
+                        - When the doctor chooses the drug and pull it into the nurses stations, who has the most power?
+                            - Doctors
+                        - In the electronic world, nurses or the system has the most power? 
+                        - By profession, the doctor commands someone. Doctors don't want losing power. They are trained with that personality. 
+                        - We should be attentive to the power shifts. We are dealing with doctors that has strong dynamics. 
+            - Handling exceptions - counter signs, verbal orders, emergencies, formulary replacements, drug shortages.
+                - Verbal orders - giving medical prescriptions through telephones and other communication means 
+                    - Can cause fragmented data 
+                    - We can use voice recordings 
+            - Example of WORKAROUND: Since medical students are not licensed, the students are not given with passwords to enter the data. 
+                    - This is an issue of security. Hence, implement should a counter-sign feature in the CPOE system.
+                    - Students may be able to log-in, given with their own password. Hence, students can provide medication orders but it will only serve as a draft order.
+                    - Once the licensed doctors verify and check the students' medical prescriptions, they can counter-sign and confirm the order. 
+            - Workflow facilitation vs medication safety. 
+                    - Are you trying to remove the errors and improve the safety? Which is more important to you?
+
+    IMAGING APPLICATION 
+        - DICOM format --> standard imaging modalities. 
+            - Values: reduces spaces, film costs, film loss, parallel viewing, remote access, image processing and manipulation, referrals. 
+        - Radiology Infromation System or Workflow Management 
+            - Workflow management part while the Imaging Applications is the picture part
+        
+    CLINICAL DECISION SUPPORT SYSTEMS 
+        - expert systems based on AI, machine learning, rules and statistics
+        - differential diagnosis and treatment options 
+        - The real place wheere most of the alues of health IT can be achieved. The CDS is the top technique. 
+        - Alerts and Reminders
+            - Reminders are passive while alerts are activee 
+            - Example of reminders: Facebook birthdays 
+        - Pre-defined documents 
+            - Order sets, personalized favorites, templaes for clinical notes 
+            - Perfect example of Health Informatics is about I not T
+        - Check List - you don't tend to think more. In another contet 
+        - If you are the trainees, you are supposed to be the thinkers since it is important for the learning proecss. However, during the real-world practice, checklist 
+          can still reduce the errors. Check list is introduced as a mechanism to help medical doctors. 
+        - Simple UI designed to help clinical decision making
+            - Abnormal lab highlights 
+            - Graph/Visualization for lab results 
+            - Filters and sorting functions  
+        - Read the Elson, Faughnan, and Connelley (1997)
+
+    DIGITAL HEALTH TRANSFORMATION 
+        - DHT: Service is patient-focused
+        - Rise of the Machines?
+        - Digitizing Healthcare: The Digital Hospital? 
+            - The doctor is not human? 
+            - It is not about the technology.
+
+        - Teenage Sex of IT 
+            - Big data is like teenage sex. 
+        - Nearly every technology follows this trend. For instance, Deep Learning has a hype cycle, similar to other emerging technologies like IoT, Brain-Computer Interface
+        - The limitations of human doctors. Most of the symptoms are not specific and AI may or may not be helpful in diagnosing the patient. 
+            - AI might think about the common types of symptoms. But there are pieces of information that the doctor might have missed. 
+            - Some symptoms are not entirely specific. AI systems can be helpful in diagnosis but it is not entirely accurate. 
+            - Most diagnosis are not diagnosed by diagnositc criteria, but by [atterns of clinical presentation and perceived likeliood of different diseases given available information 
+                - Human is good at pattern recognition, while machine is good at logic and computations. 
+            - There is a pattern. The world works in patterns. 
